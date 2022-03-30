@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { createUserDoc, NativeSignIn, signInWithGooglePopup } from "../../utils/firebase/firebase.utils";
+import { NativeSignIn, signInWithGooglePopup } from "../../utils/firebase/firebase.utils";
 import FormInput from "../FormInput/FormInput.component";
 import Button from "../Button/Button.component";
 import './SignIn.styles.scss';
@@ -15,8 +15,7 @@ const SignIn = () => {
     const { email, password } = formFields;
 
     const SignInWithGoogle = async () => {
-        const { user } = await signInWithGooglePopup();
-        await createUserDoc(user);
+        await signInWithGooglePopup();
     }
 
     const resetFormFields = () => {
@@ -33,8 +32,7 @@ const SignIn = () => {
         event.preventDefault();
 
         try {
-            const { user } = await NativeSignIn(email, password);
-            console.log(user);
+            await NativeSignIn(email, password);
             resetFormFields();
         } catch (error) {
             if(error.code === 'auth/user-not-found' || error.code === 'auth/wrong-password') {
