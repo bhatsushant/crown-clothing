@@ -1,5 +1,5 @@
-import SignUp from "../../SignUp/SignUp.component";
-import SignIn from "../../SignIn/SignIn.component";
+import SignUp from "../../components/SignUp/SignUp.component";
+import SignIn from "../../components/SignIn/SignIn.component";
 import './Authentication.styles.scss';
 
 const Authentication = () => {
